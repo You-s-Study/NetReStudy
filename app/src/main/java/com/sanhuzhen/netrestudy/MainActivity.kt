@@ -1,11 +1,21 @@
 package com.sanhuzhen.netrestudy
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.sanhuzhen.netrestudy.base.BaseActivity
+import com.sanhuzhen.netrestudy.databinding.ActivityMainBinding
+import com.sanhuzhen.netrestudy.http.httpurlconnection.HttpUrlConnectionActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding.apply {
+            btHttpUrlConnection.setOnClickListener {
+                startActivity(Intent(this@MainActivity, HttpUrlConnectionActivity::class.java))
+            }
+            btOkhttp.setOnClickListener { }
+        }
+
     }
 }
